@@ -1,13 +1,3 @@
-/* Hi! The configuration below will provision a basic
-VPC with a subnet, a route table, a security group,
-an internet gateway, an EC2 instance.
-
-The tags of the resources are generated based on the
-`resource_prefix` specified:
-`resource_prefix-resource_type`
-*/
-
-
 terraform {
   required_providers {
     aws = {
