@@ -3,9 +3,9 @@
 ## About
 
 This configuration assumes you have access to an AWS account and a CLI user set up, a Route 53 hosted zone readily available, and terraform.
-The `init.sh` script will be executed on the EC2 once the infrastructure is provisioned. It installs docker, docker-compose, certbot,
-generate an SSL certificate, the `nextcloud.conf` and `docker-compose.yaml` files, and will write some environment variables to
-`.env.nextcloud` for the initial setup.
+The `init.sh` script will be executed on the EC2 instance once the infrastructure is provisioned. It installs docker, docker-compose, certbot,
+generates an SSL certificate, the `nextcloud.conf` and `docker-compose.yaml` files, and writes some environment variables to
+`.env.nextcloud` needed for the initial setup.
 
 ## Instructions
 
@@ -47,3 +47,10 @@ $ terraform destroy
 
 [^tfvars]: Or any other name. When planning, applying or destroying, add the flag `-var-file=name-of.tfvars`
 
+## How it works
+
+The diagram below depicts the infrastructure and the traffic handling of the setup. In this case -- since it is a single EC2 instance
+configuration  -- the A record is directly pointing to it. The generated SSL certificate and the server configuration is passed to the
+Nginx container, which is set up as a reverse proxy for the Nextcloud app container.
+
+![Diagram of the infrastructure](assets/nextcloud-on-aws.jpg)
