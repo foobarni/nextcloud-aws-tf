@@ -1,4 +1,4 @@
-# Nextclound on AWS
+# Nextcloud on AWS
 
 ## About
 
